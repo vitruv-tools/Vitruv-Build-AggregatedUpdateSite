@@ -1,4 +1,4 @@
-name: Generate And Deploy Nightly Aggregated Updatesite
+name: Generate And Deploy
 
 on:
   push:
