@@ -1,0 +1,35 @@
+name: Generate And Deploy Nightly Aggregated Updatesite
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  aggregation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/MANIFEST.MF') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Generate aggregated updatesite
+        run: >
+          ./mvnw -B -U clean package
+          -Dstyle.color=always
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.tycho.core.resolver.DefaultTychoResolver=warn
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.tycho.osgi.configuration.MavenContextConfigurator=warn
+          -Dorg.slf4j.simpleLogger.log.org.eclipse.sisu.equinox.launching.internal.DefaultEquinoxLauncher=warn
+          -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.NoOpLog
+        env: 
+          MAVEN_OPTS: -Djansi.force=true
+      - name: Publish Update Site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
+          external_repository: vitruv-tools/updatesite
+          destination_dir: nightly/aggregated
+          publish_dir: target/final
+          publish_branch: master
+          
