@@ -36,7 +36,7 @@ jobs:
           external_repository: vitruv-tools/updatesite
           destination_dir: nightly/aggregated
           publish_dir: target/final
-          publish_branch: master
+          publish_branch: main
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           
