@@ -10,4 +10,145 @@
 	<packaging>pom</packaging>
 	<name>Vitruv Aggregated Update Site</name>
 
+	<properties>
+		<aggregator.filename>nightly.aggr</aggregator.filename>
+		<maven-resources.version>3.2.0</maven-resources.version>
+		<maven-antrun.version>3.0.0</maven-antrun.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven-clean.version}</version>
+				<executions>
+					<execution>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>workspace</directory>
+								</fileset>
+								<fileset>
+									<directory>target</directory>
+								</fileset>
+								<fileset>
+									<includes>
+										<include>release.aggr</include>
+									</includes>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-eclipserun-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<repositories>
+						<repository>
+							<id>Eclipse</id>
+							<layout>p2</layout>
+							<url>${eclipse.updatesite}</url>
+						</repository>
+						<repository>
+							<id>Eclipse CBI Aggregator</id>
+							<layout>p2</layout>
+							<url>http://download.eclipse.org/cbi/updates/aggregator/ide/4.13/</url>
+						</repository>
+					</repositories>
+					<jvmArgs>
+						<args>-Xmx1024m</args>
+					</jvmArgs>
+					<applicationsArgs>
+						<args>-application</args>
+						<args>org.eclipse.cbi.p2repo.cli.headless</args>
+						<args>aggregate</args>
+						<args>--buildModel</args>
+						<args>${aggregator.filename}</args>
+						<args>--action</args>
+						<args>BUILD</args>
+					</applicationsArgs>
+					<dependencies>
+						<dependency>
+							<artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.e4.rcp</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+						<dependency>
+							<artifactId>org.eclipse.cbi.p2repo.aggregator.editor.feature</artifactId>
+							<type>eclipse-feature</type>
+						</dependency>
+					</dependencies>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>eclipse-run</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources.version}</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<property>
+					<name>release</name>
+				</property>
+			</activation>
+			<properties>
+				<aggregator.filename>release.aggr</aggregator.filename>
+			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>${maven-antrun.version}</version>
+						<executions>
+							<execution>
+								<phase>generate-resources</phase>
+								<configuration>
+									<target name="replace">
+										<copy file="nightly.aggr" toFile="release.aggr"/>
+										<replaceregexp file="release.aggr" match="https://vitruv-tools.github.io/updatesite/nightly/(.*)" replace="https://vitruv-tools.github.io/updatesite/release/\1/latest" byline="true" />
+										<replaceregexp file="release.aggr" match="Vitruv Nightly Update Site" replace="Vitruv Release Update Site" byline="true" />
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
