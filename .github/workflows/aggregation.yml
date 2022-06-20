@@ -1,6 +1,10 @@
 name: Generate And Deploy Nightly Aggregated Updatesite
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   aggregation:
@@ -25,6 +29,7 @@ jobs:
         env: 
           MAVEN_OPTS: -Djansi.force=true
       - name: Publish Update Site
+        if: github.ref == 'refs/heads/main' && github.repository_owner == 'vitruv-tools'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
