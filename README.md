@@ -11,7 +11,7 @@ This repository builds an aggregated update site from the individual update site
 This repository contains three kinds of artifacts:
 1. The aggregated update site specification (`nightly.aggr`) with all aggregated artifacts and references to update site providing their dependencies
 2. A Maven build specification that executes the CBI aggregator validating the aggregation and building an aggregated update site from it. It can be run using `mvnw clean package` (using the provided Maven wrapper) to perform a build of nightly artifacts and using `mvnw clean package -Prelease` to create a build of the latest release artifacts.
-3. A GitHub Actions workflow that executes the Maven build and deploys the generated aggregated update site to the https://github.com/vitruv-tools/updatesite repository, which is then available at https://vitruv-tools.github.io/updatesite/nightly/aggregated. Currently, no release builds are supported by the GitHub Actions workflow (see #1).
+3. A GitHub Actions workflow that executes the Maven build and deploys the generated aggregated update site to the https://github.com/vitruv-tools/updatesite repository, which is then available at https://vitruv-tools.github.io/updatesite/nightly/aggregated. Currently, no release builds are supported by the GitHub Actions workflow.
 
 ## Process
 The GitHub Actions workflow is executed upon changes to this repository and can also be explicitly dispatched. The latter is, in particular, done whenever new individual update sites are pushed to the https://github.com/vitruv-tools/updatesite repository, such that the aggregated update site is build with the newly added artifacts.
