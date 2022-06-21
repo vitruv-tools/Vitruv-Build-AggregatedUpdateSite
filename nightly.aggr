@@ -2,6 +2,7 @@
 <aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="Vitruv Nightly Update Site" buildRoot="target">
   <validationSets label="main">
     <contributions label="local">
+      <repositories location="https://vitruv-tools.github.io/updatesite/nightly/change"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/framework"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/dsls"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/domains/cbs"/>
