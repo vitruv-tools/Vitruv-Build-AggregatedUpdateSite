@@ -5,7 +5,6 @@
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/change"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/framework"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/dsls"/>
-      <repositories location="https://vitruv-tools.github.io/updatesite/nightly/domains/cbs"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/applications/cbs"/>
     </contributions>
     <contributions label="externals">
