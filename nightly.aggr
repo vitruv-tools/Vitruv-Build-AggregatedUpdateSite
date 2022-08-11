@@ -6,6 +6,7 @@
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/framework"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/dsls"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/applications/cbs"/>
+      <repositories location="https://vitruv-tools.github.io/updatesite/nightly/adapters"/>
     </contributions>
     <contributions label="externals">
       <repositories location="https://vitruv-tools.github.io/updatesite/release/license/1.0.0" mirrorArtifacts="false">
