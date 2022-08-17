@@ -5,7 +5,7 @@
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/change"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/framework"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/dsls"/>
-      <repositories location="https://vitruv-tools.github.io/updatesite/nightly/applications/cbs"/>
+      <repositories location="https://vitruv-tools.github.io/updatesite/nightly/case-studies"/>
       <repositories location="https://vitruv-tools.github.io/updatesite/nightly/adapters"/>
     </contributions>
     <contributions label="externals">
