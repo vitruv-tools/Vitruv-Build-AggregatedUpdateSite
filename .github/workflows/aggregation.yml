@@ -23,7 +23,7 @@ jobs:
       - name: Adapt nightly.aggr [Release]
         if: github.event_name == 'release'
         run: |
-          sed -r -i "s/https:\/\/vitruv-tools.github.io\/updatesite\/nightly\/(.*)\"/https:\/\/vitruv-tools.github.io\/updatesite\/release\/\1\/${{ github.event.release.tag_name }}\"/g" nightly.aggr
+          sed -r -i "" "s#https://vitruv-tools.github.io/updatesite/nightly/(.*)\"#https://vitruv-tools.github.io/updatesite/release/\1/${{ github.event.release.tag_name }}\"#g" nightly.aggr
           sed -i "s/Vitruv Nightly Update Site/Vitruv Release Update Site/g" nightly.aggr
       - name: Generate aggregated updatesite
         run: >
