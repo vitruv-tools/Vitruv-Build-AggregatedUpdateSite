@@ -52,7 +52,7 @@ jobs:
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
           external_repository: vitruv-tools/updatesite
-          destination_dir: release/aggregated
+          destination_dir: release/aggregated/${{ github.event.release.tag_name }}
           publish_dir: target/final
           publish_branch: main
           user_name: 'github-actions[bot]'
