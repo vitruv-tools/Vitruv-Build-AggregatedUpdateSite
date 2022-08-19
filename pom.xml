@@ -11,9 +11,7 @@
 	<name>Vitruv Aggregated Update Site</name>
 
 	<properties>
-		<aggregator.filename>nightly.aggr</aggregator.filename>
 		<maven-resources.version>3.2.0</maven-resources.version> <!-- https://search.maven.org/artifact/org.apache.maven.plugins/maven-resources-plugin -->
-		<maven-antrun.version>3.1.0</maven-antrun.version> <!-- https://search.maven.org/artifact/org.apache.maven.plugins/maven-antrun-plugin -->
 		<eclipse-aggregator>http://download.eclipse.org/cbi/updates/aggregator/ide/4.13/</eclipse-aggregator>
 	</properties>
 
@@ -32,11 +30,6 @@
 								</fileset>
 								<fileset>
 									<directory>target</directory>
-								</fileset>
-								<fileset>
-									<includes>
-										<include>release.aggr</include>
-									</includes>
 								</fileset>
 							</filesets>
 						</configuration>
@@ -69,7 +62,7 @@
 						<args>org.eclipse.cbi.p2repo.cli.headless</args>
 						<args>aggregate</args>
 						<args>--buildModel</args>
-						<args>${aggregator.filename}</args>
+						<args>nightly.aggr</args>
 						<args>--action</args>
 						<args>BUILD</args>
 					</applicationsArgs>
@@ -113,43 +106,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>release</id>
-			<activation>
-				<property>
-					<name>release</name>
-				</property>
-			</activation>
-			<properties>
-				<aggregator.filename>release.aggr</aggregator.filename>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun.version}</version>
-						<executions>
-							<execution>
-								<phase>generate-resources</phase>
-								<configuration>
-									<target name="replace">
-										<copy file="nightly.aggr" toFile="release.aggr"/>
-										<replaceregexp file="release.aggr" match="https://vitruv-tools.github.io/updatesite/nightly/(.*)" replace="https://vitruv-tools.github.io/updatesite/release/\1/latest" byline="true" />
-										<replaceregexp file="release.aggr" match="Vitruv Nightly Update Site" replace="Vitruv Release Update Site" byline="true" />
-									</target>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 </project>

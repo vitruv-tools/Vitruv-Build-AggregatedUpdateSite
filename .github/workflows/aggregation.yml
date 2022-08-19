@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+  release:
+    types: [created]
   workflow_dispatch:
 
 jobs:
@@ -18,6 +20,11 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/MANIFEST.MF') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: [Release] Adapt nightly.aggr
+        if: github.event_name == 'release'
+        run: |
+        sed -r -i "" "s/https:\/\/vitruv-tools.github.io\/updatesite\/nightly\/(.*)\"/https:\/\/vitruv-tools.github.io\/updatesite\/release\/\1\/${{ github.event.release.tag_name }}\"/g" nightly.aggr
+        sed -i "" "s/Vitruv Nightly Update Site/Vitruv Release Update Site/g" nightly.aggr
       - name: Generate aggregated updatesite
         run: >
           ./mvnw -B -U clean package
@@ -28,13 +35,24 @@ jobs:
           -Dorg.apache.commons.logging.Log=org.apache.commons.logging.impl.NoOpLog
         env: 
           MAVEN_OPTS: -Djansi.force=true
-      - name: Publish Update Site
+      - name: Publish Nightly Update Site
         if: github.ref == 'refs/heads/main' && github.repository_owner == 'vitruv-tools'
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
           external_repository: vitruv-tools/updatesite
           destination_dir: nightly/aggregated
+          publish_dir: target/final
+          publish_branch: main
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+      - name: Publish Nightly Update Site
+        if: github.event_name == 'release' && github.repository_owner == 'vitruv-tools'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.UPDATE_SITE_DEPLOY_KEY }}
+          external_repository: vitruv-tools/updatesite
+          destination_dir: release/aggregated
           publish_dir: target/final
           publish_branch: main
           user_name: 'github-actions[bot]'
