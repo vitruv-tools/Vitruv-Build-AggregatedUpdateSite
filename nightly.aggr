@@ -51,5 +51,6 @@
   <configurations architecture="x86_64"/>
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
+  <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="aarch64"/>
   <customCategories identifier="metamodels" label="Vitruv Demo Metamodels" description="Metamodels for the demo applications" features="//@validationSets[label='main']/@contributions[label='externals']/@repositories.3/@features.0 //@validationSets[label='main']/@contributions[label='externals']/@repositories.3/@features.2 //@validationSets[label='main']/@contributions[label='externals']/@repositories.3/@features.4 //@validationSets[label='main']/@contributions[label='externals']/@repositories.3/@features.3 //@validationSets[label='main']/@contributions[label='externals']/@repositories.3/@features.1"/>
 </aggregator:Aggregation>
