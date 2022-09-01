@@ -1,4 +1,7 @@
 # Vitruv Aggregated Eclipse Update Site Generation
+[![Latest Release](https://img.shields.io/github/release/vitruv-tools/Vitruv-Build-AggregatedUpdateSite.svg)](https://github.com/vitruv-tools/Vitruv-Build-AggregatedUpdateSite/releases/latest)
+[![Issues](https://img.shields.io/github/issues/vitruv-tools/Vitruv-Build-AggregatedUpdateSite.svg)](https://github.com/vitruv-tools/Vitruv-Build-AggregatedUpdateSite/issues)
+[![License](https://img.shields.io/github/license/vitruv-tools/Vitruv-Build-AggregatedUpdateSite.svg)](https://raw.githubusercontent.com/vitruv-tools/Vitruv-Build-AggregatedUpdateSite/main/LICENSE)
 
 ## Purpose
 This repository is responsible for generating and deploying the aggregated Eclipse update site for Vitruv artifacts.
