@@ -10,3 +10,5 @@ updates:
     commit-message:
       prefix: "GitHub Actions"
       include: "scope"
+    reviewers:
+      - "vitruv-tools/maintainers"
