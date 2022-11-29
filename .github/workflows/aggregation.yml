@@ -17,7 +17,7 @@ jobs:
       - name: Cache
         uses: actions/cache@v3.0.11
         with:
-          path: ~/.m2
+          path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/MANIFEST.MF') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Adapt nightly.aggr [Release]
