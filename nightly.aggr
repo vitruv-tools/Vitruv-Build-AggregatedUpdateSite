@@ -12,15 +12,15 @@
       <repositories location="https://vitruv-tools.github.io/updatesite/release/license/1.0.0" mirrorArtifacts="false">
         <features name="tools.vitruv.license.feature.feature.group" versionRange="[1.0.0,1.0.1)"/>
       </repositories>
-      <repositories location="https://kit-sdq.github.io/updatesite/release/commons/latest" mirrorArtifacts="false">
+      <repositories location="https://kit-sdq.github.io/updatesite/release/commons/2.1.0" mirrorArtifacts="false">
         <features name="edu.kit.ipd.sdq.commons.util.java.feature.feature.group"/>
         <features name="edu.kit.ipd.sdq.commons.util.emf.feature.feature.group"/>
         <features name="edu.kit.ipd.sdq.commons.util.eclipse.feature.feature.group"/>
       </repositories>
-      <repositories location="https://kit-sdq.github.io/updatesite/release/xannotations/latest" mirrorArtifacts="false">
+      <repositories location="https://kit-sdq.github.io/updatesite/release/xannotations/1.6.0" mirrorArtifacts="false">
         <features name="edu.kit.ipd.sdq.activextendannotations.feature.feature.group"/>
       </repositories>
-      <repositories location="https://kit-sdq.github.io/updatesite/release/metamodels/demo/latest" mirrorArtifacts="false">
+      <repositories location="https://kit-sdq.github.io/updatesite/release/metamodels/demo/1.7.0" mirrorArtifacts="false">
         <features name="edu.kit.ipd.sdq.metamodels.addresses.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
         <features name="edu.kit.ipd.sdq.metamodels.recipients.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
         <features name="edu.kit.ipd.sdq.metamodels.families.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
