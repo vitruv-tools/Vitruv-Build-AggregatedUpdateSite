@@ -27,6 +27,7 @@
         <features name="edu.kit.ipd.sdq.metamodels.persons.feature.feature.group"/>
         <features name="edu.kit.ipd.sdq.metamodels.insurance.feature.feature.group"/>
         <features name="edu.kit.ipd.sdq.metamodels.autosar.feature.feature.group"/>
+        <features name="edu.kit.ipd.sdq.metamodels.simulink.feature.feature.group"/>
       </repositories>
       <repositories location="https://download.eclipse.org/releases/2022-12" mirrorArtifacts="false">
         <features name="org.eclipse.emf.ecore.edit.feature.group"/>
