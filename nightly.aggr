@@ -26,8 +26,6 @@
         <features name="edu.kit.ipd.sdq.metamodels.families.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
         <features name="edu.kit.ipd.sdq.metamodels.persons.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
         <features name="edu.kit.ipd.sdq.metamodels.insurance.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
-        <features name="edu.kit.ipd.sdq.metamodels.autosar.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
-        <features name="edu.kit.ipd.sdq.metamodels.simulink.feature.feature.group" categories="//@customCategories[identifier='metamodels']"/>
       </repositories>
       <repositories location="https://download.eclipse.org/releases/2022-12" mirrorArtifacts="false">
         <features name="org.eclipse.emf.ecore.edit.feature.group"/>
